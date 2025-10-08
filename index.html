@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Daily English Puzzles</title>
+  <meta name="description" content="A simple site with one fresh English puzzle each day — Wordle-style or a classic riddle." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="brand">Daily English Puzzles</h1>
+      <nav class="nav">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+        <a href="#" id="howToBtn" class="link">How to play</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="meta">
+      <div>
+        <span class="label">Today:</span>
+        <span id="today"></span>
+      </div>
+      <div>
+        <span class="label">Mode:</span>
+        <span id="mode"></span>
+      </div>
+      <div>
+        <span class="label">Streak:</span>
+        <span id="streak">0</span>
+      </div>
+    </section>
+
+    <!-- Wordle Game -->
+    <section id="wordleSection" class="panel hidden" aria-live="polite">
+      <div class="board" id="board" role="application" aria-label="Word puzzle board"></div>
+      <div class="keyboard" id="keyboard"></div>
+      <div id="wordleMsg" class="msg" role="status" aria-live="polite"></div>
+    </section>
+
+    <!-- Riddle Game -->
+    <section id="riddleSection" class="panel hidden" aria-live="polite">
+      <h2 id="riddleQuestion" class="riddle-q"></h2>
+      <form id="riddleForm" class="riddle-form" autocomplete="off">
+        <input id="riddleAnswer" type="text" placeholder="Type your answer…" aria-label="Your answer" required />
+        <button class="btn primary" type="submit">Check</button>
+        <button class="btn" type="button" id="hintBtn">Hint</button>
+        <button class="btn ghost" type="button" id="revealBtn">Reveal</button>
+      </form>
+      <div id="riddleMsg" class="msg" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="share panel">
+      <button id="shareBtn" class="btn">Share result</button>
+      <span id="shareStatus" class="muted"></span>
+    </section>
+  </main>
+
+  <dialog id="howto">
+    <h3>How to play</h3>
+    <p>Each day you get one puzzle: either a 5-letter Wordle-style word or a classic riddle.</p>
+    <ul>
+      <li><strong>Word:</strong> You have 6 tries. Letters turn <span class="g">green</span> if correct, <span class="y">yellow</span> if in the word but wrong spot, and <span class="x">gray</span> if not in the word.</li>
+      <li><strong>Riddle:</strong> Read the prompt, type your answer, and press <em>Check</em>. Spelling variants and case don’t matter.</li>
+    </ul>
+    <p>Keep a streak by solving on consecutive calendar days (based on your device’s time).</p>
+    <form method="dialog"><button class="btn">Got it</button></form>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Daily English Puzzles. One puzzle a day. No logins, no tracking.</p>
+      <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener">Word list sources include public-domain lists.</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
